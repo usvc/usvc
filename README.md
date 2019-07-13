@@ -4,9 +4,12 @@
 - [Landscape](#landscape)
   - [CI Images](#ci-images)
     - [Build Images](#build-images)
+      - [Golang](#golang)
     - [Base Images](#base-images)
+      - [Docker](#docker)
+      - [Base](#base)
   - [Utilities](#utilities)
-    - [Semver Version Bumper](#semver-version-bumper)
+    - [Semver](#semver)
 
 # Landscape
 
@@ -19,12 +22,16 @@ CI images are for use in pipelines and facilitate cross-compatibility amongst av
 ### Build Images
 Build images are runtime specific and includes most-if-not-all binaries you might need in a CI environment for the specified technology.
 
-- https://gitlab.com/usvc/ci/golang
+#### Golang
+https://gitlab.com/usvc/ci/golang
 
 ### Base Images
 Base images are for steps/jobs involved in non-runtime specific jobs such as Git operations and other packaging/releasing needs.
 
+#### Docker
 - https://gitlab.com/usvc/ci/docker
+
+#### Base
 - https://gitlab.com/usvc/ci/base
 
 ## Utilities
@@ -33,7 +40,7 @@ Base images are for steps/jobs involved in non-runtime specific jobs such as Git
 
 Utilities are tools used that facilitate developer happiness.
 
-### Semver Version Bumper
+### Semver
 This utility enables bumping of semver versions.
 
 - https://gitlab.com/usvc/utils/semver
