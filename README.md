@@ -12,10 +12,15 @@
     - [Go Version Generator](#go-version-generator)
   - [Modules](#modules)
     - [Go](#go)
+  - [Playground](#playground)
+    - [Sync GitLab To Github](#sync-gitlab-to-github)
   - [Utilities](#utilities)
+    - [DB Migrator](#db-migrator)
     - [Semver](#semver)
 
 # Landscape
+
+- - -
 
 ## CI Images
 
@@ -41,6 +46,8 @@ Base images are for steps/jobs involved in non-runtime specific jobs such as Git
 
 > https://gitlab.com/usvc/ci/base
 
+- - -
+
 ## Development Tooling
 
 > TL;DR: https://gitlab.com/usvc/dev
@@ -51,6 +58,8 @@ This namespace houses repositories for scripts/snippets/small packages that assi
 A simple module meant for Git submodule integration that uses Go's `go generate` to define a Version and Commit global variable for a Go package.
 
 > https://gitlab.com/usvc/dev/go-generate-version
+
+- - -
 
 ## Modules
 
@@ -64,11 +73,31 @@ This namespace is used for technology specific libraries/packages.
 
 This namespace features libraries for use with services written in Go.
 
+- - -
+
+## Playground
+
+> TL;DR: https://gitlab.com/usvc/playground
+
+This namespace houses sample/showcase projects that's non-service/application/code related.
+
+### Sync GitLab To Github
+This project demonstrates synchronising a repository from GitLab to GitHub.
+
+> https://gitlab.com/usvc/playground/sync-gitlab-to-github
+
+- - -
+
 ## Utilities
 
 > TL;DR: https://gitlab.com/usvc/utils
 
 This namespace houses repositories for tools that facilitate developer happiness.
+
+### DB Migrator
+This utility does database migrations using Rails migrations.
+
+> https://gitlab.com/usvc/utils/db-migrator
 
 ### Semver
 This utility enables bumping of semver versions.
