@@ -1,50 +1,46 @@
 # µ-services
 
 - [µ-services](#%C2%B5-services)
-- [Landscape](#landscape)
-  - [CI Images](#ci-images)
-    - [Build Images](#build-images)
-      - [Golang](#golang)
-    - [Base Images](#base-images)
-      - [Docker](#docker)
-      - [Base](#base)
-  - [Development Tooling](#development-tooling)
-    - [Go Version Generator](#go-version-generator)
-  - [Modules](#modules)
-    - [Go](#go)
-  - [Playground](#playground)
-    - [Sync GitLab To Github](#sync-gitlab-to-github)
-  - [Utilities](#utilities)
-    - [DB Migrator](#db-migrator)
-    - [Semver](#semver)
+- [Landscape](#Landscape)
+  - [Images](#Images)
+    - [For use as support services](#For-use-as-support-services)
+    - [For use in Continuous Integration (CI) pipelines](#For-use-in-Continuous-Integration-CI-pipelines)
+  - [Development Tooling](#Development-Tooling)
+    - [Go Version Generator](#Go-Version-Generator)
+  - [Modules](#Modules)
+    - [Go](#Go)
+  - [Playground](#Playground)
+    - [Sync GitLab To Github](#Sync-GitLab-To-Github)
+  - [Utilities](#Utilities)
+    - [DB Migrator](#DB-Migrator)
+    - [Semver](#Semver)
 
 # Landscape
 
 - - -
 
-## CI Images
+## Images
 
-> TL;DR: https://gitlab.com/usvc/ci
+> TL;DR: https://gitlab.com/usvc/images
+
+### For use as support services
+
+| Name | Description | GitLab Link | DockerHub Link |
+| --- | --- | --- | --- |
+| MkDocs | For use in documentation generation | [![pipeline status](https://gitlab.com/usvc/images/mkdocs/badges/master/pipeline.svg)](https://gitlab.com/usvc/images/mkdocs/commits/master) | [![dockerhub link](https://img.shields.io/badge/dockerhub-usvc%2Fmkdocs-blue)](https://hub.docker.com/r/usvc/mkdocs) |
+
+### For use in Continuous Integration (CI) pipelines
+
+> TL;DR: https://gitlab.com/usvc/images/ci
 
 This namespace houses repositories for CI images meant for use in pipelines and facilitate cross-compatibility amongst available pipeline providers.
 
-### Build Images
-Build images are runtime specific and includes most-if-not-all binaries you might need in a CI environment for the specified technology.
-
-#### Golang
-
-> https://gitlab.com/usvc/ci/golang
-
-### Base Images
-Base images are for steps/jobs involved in non-runtime specific jobs such as Git operations and other packaging/releasing needs.
-
-#### Docker
-
-> https://gitlab.com/usvc/ci/docker
-
-#### Base
-
-> https://gitlab.com/usvc/ci/base
+| Name | Description | GitLab Link | DockerHub Link |
+| --- | --- | --- | --- |
+| Base | For general use | [![pipeline status](https://gitlab.com/usvc/images/ci/base/badges/master/pipeline.svg)](https://gitlab.com/usvc/images/ci/base/commits/master) | [![dockerhub link](https://img.shields.io/badge/dockerhub-usvc%2Fci--base-blue.svg)](https://hub.docker.com/r/usvc/ci-base) |
+| Docker | For `dind` use | [![pipeline status](https://gitlab.com/usvc/images/ci/docker/badges/master/pipeline.svg)](https://gitlab.com/usvc/images/ci/docker/commits/master) | [![dockerhub link](https://img.shields.io/badge/dockerhub-usvc%2Fci--docker-blue.svg)](https://hub.docker.com/r/usvc/ci-docker) |
+| Golang | For Golang projects | [![pipeline status](https://gitlab.com/usvc/ci/golang/badges/master/pipeline.svg)](https://gitlab.com/usvc/ci/golang/commits/master) | [![dockerhub link](https://img.shields.io/badge/dockerhub-usvc%2Fci--golang-blue.svg)](https://hub.docker.com/r/usvc/ci-golang) |
+| Node | For JS/TS projects | [![pipeline status](https://gitlab.com/usvc/ci/node/badges/master/pipeline.svg)](https://gitlab.com/usvc/ci/node/commits/master) | [![dockerhub link](https://img.shields.io/badge/dockerhub-usvc%2Fci--node-blue.svg)](https://hub.docker.com/r/usvc/ci-node) |
 
 - - -
 
