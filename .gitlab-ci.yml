@@ -43,8 +43,7 @@ to github:
     - chmod 600 -R ~/.ssh/id_rsa
     - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
   script:
-    - git remote set-url origin ${GITHUB_REPO_URL}
-    - git checkout master
+    - git remote set-url --add --push origin ${GITHUB_REPO_URL}
     - git push -u origin master --tags --force
   after_script:
     - rm -rf ~/.ssh/*
@@ -59,8 +58,7 @@ to github pages:
     - chmod 600 -R ~/.ssh/id_rsa
     - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
   script:
-    - git remote set-url origin ${GITHUB_REPO_URL}
-    - git checkout master
+    - git remote set-url --add --push origin ${GITHUB_REPO_URL}
     - mkdocs gh-deploy --force
   after_script:
     - rm -rf ~/.ssh/*
