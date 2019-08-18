@@ -19,7 +19,7 @@ build:
 to gitlab:
   only: ["master"]
   stage: release
-  image: usvc/base:latest
+  image: usvc/ci-base:latest
   before_script:
     - mkdir -p ~/.ssh
     - 'printf -- "${DEPLOY_KEY}" | base64 -d > ~/.ssh/id_rsa'
@@ -36,6 +36,7 @@ to gitlab:
 to github:
   only: ["tags"]
   stage: publish
+  image: usvc/ci-base:latest
   before_script:
     - mkdir -p ~/.ssh
     - 'printf -- "${DEPLOY_KEY}" | base64 -d > ~/.ssh/id_rsa'
