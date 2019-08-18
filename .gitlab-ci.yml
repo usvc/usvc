@@ -8,9 +8,15 @@ variables:
 build:
   only: ["master"]
   stage: build
-  image: usvc/mkdocs:material-latest
+  image:
+    name: usvc/mkdocs:material-latest
+    entrypoint: ["/bin/sh"]
+  artifacts:
+    expire_in: 3 days
+    paths:
+      - ./site
   script:
-    - mkdocs
+    - mkdocs build
 
 to gitlab:
   only: ["master"]
