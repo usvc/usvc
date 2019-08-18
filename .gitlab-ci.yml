@@ -50,4 +50,22 @@ to github:
     - git checkout master
     - git push -u origin master --tags --force
   after_script:
-    - rm -rf ~/.ssh/*`
+    - rm -rf ~/.ssh/*
+
+to github pages:
+  only: ["tags"]
+  stage: publish
+  image: usvc/mkdocs:latest
+  before_script:
+    - mkdir -p ~/.ssh
+    - 'printf -- "${DEPLOY_KEY}" | base64 -d > ~/.ssh/id_rsa'
+    - chmod 600 -R ~/.ssh/id_rsa
+    - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+  script:
+    - git config --global user.email "usvc.semver@usvc.dev"
+    - git config --global user.name "usvc_publisher"
+    - git remote set-url --add --push origin ${GITHUB_REPO_URL}
+    - git fetch
+    - mkdocs gh-deploy --force
+  after_script:
+    - rm -rf ~/.ssh/*
