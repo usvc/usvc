@@ -1,18 +1,23 @@
 # Landscape
 
-## Images
+This page describes the landscape of the various `usvc` projects available for use.
 
-> TL;DR: https://gitlab.com/usvc/images
+## Images (`/images`)
+
+!!! Info "Quick Link"
+    Check out the GitLab subgroup at: [https://gitlab.com/usvc/images](https://gitlab.com/usvc/images)
 
 ### For use as support services
 
 | Name | Description | GitLab Link | DockerHub Link |
 | --- | --- | --- | --- |
 | MkDocs | For use in documentation generation | [![pipeline status](https://gitlab.com/usvc/images/mkdocs/badges/master/pipeline.svg)](https://gitlab.com/usvc/images/mkdocs/commits/master) | [![dockerhub link](https://img.shields.io/badge/dockerhub-usvc%2Fmkdocs-blue)](https://hub.docker.com/r/usvc/mkdocs) |
+| Netutils | For debugging network issues | [![pipeline status](https://gitlab.com/usvc/images/netutils/badges/master/pipeline.svg)](https://gitlab.com/usvc/images/netutils/commits/master) | [![dockerhub link](https://img.shields.io/badge/dockerhub-usvc%2Fnetutils-blue)](https://hub.docker.com/r/usvc/netutils) |
 
 ### For use in Continuous Integration (CI) pipelines
 
-> TL;DR: https://gitlab.com/usvc/images/ci
+!!! Info "Quick Link"
+    Check out the GitLab subgroup at: [https://gitlab.com/usvc/images/ci](https://gitlab.com/usvc/images/ci)
 
 This namespace houses repositories for CI images meant for use in pipelines and facilitate cross-compatibility amongst available pipeline providers.
 
@@ -25,9 +30,10 @@ This namespace houses repositories for CI images meant for use in pipelines and 
 
 - - -
 
-## Development Tooling
+## Development Tooling (`/dev`)
 
-> TL;DR: https://gitlab.com/usvc/dev
+!!! Info "Quick Link"
+    Check out the GitLab group at: [https://gitlab.com/usvc/dev](https://gitlab.com/usvc/dev)
 
 This namespace houses repositories for scripts/snippets/small packages that assist with development tooling.
 
