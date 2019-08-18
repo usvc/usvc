@@ -6,7 +6,7 @@ variables:
   GITHUB_REPO_URL: git@github.com:usvc/usvc.git
 
 build:
-  except: ["master"]
+  only: ["master"]
   stage: build
   image: usvc/mkdocs:material-latest
   artifacts:
@@ -17,7 +17,7 @@ build:
     - mkdocs build
 
 to gitlab:
-  except: ["master"]
+  only: ["master"]
   stage: release
   image: usvc/ci-base:latest
   before_script:
@@ -34,7 +34,7 @@ to gitlab:
     - rm -rf ~/.ssh/*
 
 to github:
-  only: ["master"]
+  only: ["tags"]
   stage: publish
   image: usvc/ci-base:latest
   before_script:
@@ -49,19 +49,18 @@ to github:
   after_script:
     - rm -rf ~/.ssh/*
 
-# to github pages:
-#   only: ["tags"]
-#   stage: publish
-#   image: usvc/mkdocs:material-latest
-#   before_script:
-#     - mkdir -p ~/.ssh
-#     - 'printf -- "${DEPLOY_KEY}" | base64 -d > ~/.ssh/id_rsa'
-#     - chmod 600 -R ~/.ssh/id_rsa
-#     - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-#   script:
-#     - git remote set-url origin "git@gitlab.com:${CI_PROJECT_PATH}.git"
-#     - git checkout master
-#     - git remote set-url --add --push origin ${GITHUB_REPO_URL}
-#     - mkdocs gh-deploy --force
-#   after_script:
-#     - rm -rf ~/.ssh/*
+to github pages:
+  only: ["tags"]
+  stage: publish
+  image: usvc/mkdocs:material-latest
+  before_script:
+    - mkdir -p ~/.ssh
+    - 'printf -- "${DEPLOY_KEY}" | base64 -d > ~/.ssh/id_rsa'
+    - chmod 600 -R ~/.ssh/id_rsa
+    - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+  script:
+    - git remote set-url origin ${GITHUB_REPO_URL}
+    - git checkout master
+    - mkdocs gh-deploy --force
+  after_script:
+    - rm -rf ~/.ssh/*
