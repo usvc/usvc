@@ -45,7 +45,6 @@ to github:
   script:
     - git remote set-url origin ${GITHUB_REPO_URL}
     - git checkout master
-    - git remote set-url --add --push origin ${GITHUB_REPO_URL}
     - git push -u origin master --tags --force
   after_script:
     - rm -rf ~/.ssh/*
