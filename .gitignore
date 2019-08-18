@@ -1,0 +1,4 @@
+# used for ssh/deploy key generation
+.ssh
+# static site for mkdocs
+site

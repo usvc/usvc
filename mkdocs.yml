@@ -1,0 +1,26 @@
+# enlace de referencia: https://www.mkdocs.org/user-guide/configuration/
+site_name: µ-services
+site_url: https://usvc.dev
+repo_url: https://github.com/usvc/usvc
+repo_name: GitHub
+site_author: zephinzer
+site_description: Main website for µsvc
+google_analytics:
+  - UA-75287781-6
+  - usvc.dev
+nav:
+  - Home: ./index.md
+  - Landscape: ./landscape.md
+theme:
+  name: material
+  highlightjs: true
+  hljs_languages:
+    - sh
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+plugins:
+  - search
+dev_addr: 0.0.0.0:12345
