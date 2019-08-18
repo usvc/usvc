@@ -45,8 +45,8 @@ to github:
   script:
     - git config --global user.email "usvc.semver@usvc.dev"
     - git config --global user.name "usvc_publisher"
-    - git remote set-url --add --push origin ${GITHUB_REPO_URL}
     - git checkout master
+    - git remote set-url --add --push origin ${GITHUB_REPO_URL}
     - git push -u origin master --tags --force
   after_script:
     - rm -rf ~/.ssh/*
