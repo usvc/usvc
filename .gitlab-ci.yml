@@ -8,9 +8,7 @@ variables:
 build:
   only: ["master"]
   stage: build
-  image:
-    name: usvc/mkdocs:material-latest
-    entrypoint: ["/bin/sh"]
+  image: usvc/mkdocs:material-latest
   artifacts:
     expire_in: 3 days
     paths:
