@@ -55,7 +55,7 @@ to github:
 to github pages:
   only: ["tags"]
   stage: publish
-  image: usvc/mkdocs:latest
+  image: usvc/mkdocs:material-latest
   before_script:
     - mkdir -p ~/.ssh
     - 'printf -- "${DEPLOY_KEY}" | base64 -d > ~/.ssh/id_rsa'
