@@ -1,28 +1,49 @@
-IMAGE_URL=usvc/www
+IMAGE_PATH=usvc/www
 PORT=12345
 
-run: build_image
+run: build
 	docker run \
 		--volume $$(pwd):/app \
 		--publish $(PORT):$(PORT) \
-		--workdir /app \
-		$(IMAGE_URL):latest \
+		$(IMAGE_PATH):latest \
 		serve \
 			--dev-addr=0.0.0.0:$(PORT)
 
-build_image:
-	docker build --tag $(IMAGE_URL):latest .
+build:
+	docker build --tag $(IMAGE_PATH):latest .
 
-build: build_image
-	docker run \
+deploy:
+	git fetch & git fetch origin gh-pages & wait
+	docker build \
+		--build-arg USER_ID=$$(id -u) \
+		--tag usvc.dev/${IMAGE_PATH} .
+	docker run -it \
+		--volume ~/.ssh:/home/$$(id -u)/.ssh \
 		--volume $$(pwd):/app \
-		--publish $(PORT):$(PORT) \
-		--workdir /app \
 		--user $$(id -u) \
-		$(IMAGE_URL):latest \
-		build
+		usvc.dev/${IMAGE_PATH} \
+		gh-deploy
 
-.ssh:
-	mkdir ./.ssh
-	ssh-keygen -t rsa -b 4096 -f ./.ssh/id_rsa -N ""
-	cat ./.ssh/id_rsa | base64 -w 0 > ./.ssh/id_rsa.b64
+publish_from_container:
+	ssh -o FingerprintHash=sha256 -o StrictHostKeyChecking=no gitlab.com
+	make publish
+
+#####################################################
+
+serve:
+	mkdocs serve --dev-addr=127.0.0.1:$(PORT)
+
+static:
+	mkdocs build -s -v -d $$(pwd)/site
+
+publish:
+	mkdocs gh-deploy
+
+ssh:
+	mkdir -p ./ssh
+	ssh-keygen -t rsa -b 4096 -f ./ssh/id_rsa -q -N ""
+
+#####################################################
+
+visit_repo:
+	open https://github.com/usvc/usvc
